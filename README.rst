@@ -46,7 +46,7 @@ A few options can be customized with environment variables:
 
 Example::
 
-  ODOO_DB_NAME=demo locust -f examples/profile.py --host http://localhost:8069 
+  ODOO_DB_NAME=demo locust -f examples/locustfile.py --host http://localhost:8069 
 
 
 Check the `examples <https://github.com/camptocamp/locustodoorpc/tree/master/examples>`_
