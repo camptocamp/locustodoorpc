@@ -18,12 +18,10 @@ Locust custom client integrating the `odoorpc <https://github.com/osiell/odoorpc
 Installation
 ------------
 
-```
-virtualenv .env
-source .env/bin/activate
-pip install locustodoorpc
-
-```
+::
+  virtualenv .env
+  source .env/bin/activate
+  pip install locustodoorpc
 
 Usage
 -----
@@ -45,12 +43,10 @@ A few options can be customized with environment variables:
 |              |automatically recognized                                     |
 +--------------+-------------------------------------------------------------+
 
-Example:
+Example::
 
-```
-ODOO_DB_NAME=demo locust -f examples/profile.py --host http://localhost:8069 
+  ODOO_DB_NAME=demo locust -f examples/profile.py --host http://localhost:8069 
 
-```
 
 Check the `examples <https://github.com/camptocamp/locustodoorpc/tree/master/examples>`_
 
