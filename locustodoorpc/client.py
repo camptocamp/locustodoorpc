@@ -94,10 +94,19 @@ class OdooRPCLocust(Locust):
     def __init__(self, *args, **kwargs):
         super(OdooRPCLocust, self).__init__(*args, **kwargs)
         url = urlparse(self.host)
+        port = url.port
+        if url.scheme == 'https':
+            protocol = 'jsonrpc+ssl'
+            if not port:
+                port = 443
+        else:
+            protocol = 'jsonrpc'
+            if not port:
+                port = 80
         protocol = 'jsonrpc+ssl' if url.scheme == 'https' else 'jsonrpc'
         params = {
             'host': url.hostname,
-            'port': url.port or 80,
+            'port': port,
             'protocol': protocol,
         }
         if self.version:
