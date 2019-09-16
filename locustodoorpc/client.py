@@ -10,11 +10,11 @@ import time
 import odoorpc
 from locust import Locust, events
 
-PY3 = sys.version[0] == 3
+PY3 = sys.version[0] == '3'
 
 if PY3:
     import urllib
-    from urllib import parse as urlparse
+    from urllib.parse import urlparse
 else:
     import urllib2 as urllib
     from urlparse import urlparse
