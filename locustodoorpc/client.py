@@ -10,14 +10,16 @@ import time
 import odoorpc
 from locust import Locust, events
 
-PY3 = sys.version[0] == 3
+PY3 = sys.version[0] == '3'
 
 if PY3:
     import urllib
-    from urllib import parse as urlparse
+    from urllib.parse import urlparse
+    from urllib.error import HTTPError, URLError
 else:
     import urllib2 as urllib
     from urlparse import urlparse
+    from urllib2 import HTTPError, URLError
 
 
 class ODOOLocustClient(odoorpc.ODOO):
@@ -36,7 +38,7 @@ class ODOOLocustClient(odoorpc.ODOO):
                 start_time = time.time()
                 try:
                     response = func(self, *args, **kwargs)
-                except (urllib.HTTPError, urllib.URLError) as err:
+                except (HTTPError, URLError) as err:
                     total_time = int((time.time() - start_time) * 1000)
                     events.request_failure.fire(
                         request_type=request_type,
