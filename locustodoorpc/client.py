@@ -8,7 +8,7 @@ import sys
 import time
 
 import odoorpc
-from locust import Locust, events
+from locust import HttpUser, events
 
 PY3 = sys.version[0] == '3'
 
@@ -74,7 +74,7 @@ class ODOOLocustClient(odoorpc.ODOO):
                                                   headers=headers)
 
 
-class OdooRPCLocust(Locust):
+class OdooRPCLocust(HttpUser):
     """ Locust class providing the odoorpc client
 
     This is the abstract Locust class which should be subclassed. It provides
@@ -98,11 +98,9 @@ class OdooRPCLocust(Locust):
         url = urlparse(self.host)
         port = url.port
         if url.scheme == 'https':
-            protocol = 'jsonrpc+ssl'
             if not port:
                 port = 443
         else:
-            protocol = 'jsonrpc'
             if not port:
                 port = 80
         protocol = 'jsonrpc+ssl' if url.scheme == 'https' else 'jsonrpc'

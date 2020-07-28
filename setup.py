@@ -23,7 +23,7 @@ setup(
     packages=['locustodoorpc'],
     install_requires=[
       'odoorpc',
-      'locustio',
+      'locust',
     ],
     classifiers=(
         'Development Status :: 3 - Alpha',

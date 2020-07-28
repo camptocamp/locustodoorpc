@@ -1,4 +1,4 @@
-from locust import HttpLocust
+from locust import HttpUser, between
 from locustodoorpc import OdooRPCLocust
 from tasks import (
     BackendReadOnlyBehavior,
@@ -9,32 +9,28 @@ from tasks import (
 
 
 class BackendReadOnlyUser(OdooRPCLocust):
-    min_wait = 500
-    max_wait = 5000
+    wait_time = between(500, 5000)
     weight = 10
 
-    task_set = BackendReadOnlyBehavior
+    tasks = {BackendReadOnlyBehavior}
 
 
 class BackendWriteOnlyUser(OdooRPCLocust):
-    min_wait = 800
-    max_wait = 5000
+    wait_time = between(800, 5000)
     weight = 1
 
-    task_set = BackendWriteOnlyBehavior
+    tasks = [BackendWriteOnlyBehavior]
 
 
 class BackendMixedUser(OdooRPCLocust):
-    min_wait = 500
-    max_wait = 3000
+    wait_time = between(500, 3000)
     weight = 5
 
-    task_set = BackendMixedBehavior
+    tasks = [BackendMixedBehavior]
 
 
-class FrontendUser(HttpLocust):
-    min_wait = 200
-    max_wait = 5000
+class FrontendUser(HttpUser):
+    wait_time = between(200, 5000)
     weight = 5
 
-    task_set = FrontendBehavior
+    tasks = [FrontendBehavior]
