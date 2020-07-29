@@ -12,7 +12,7 @@ class BackendReadOnlyUser(OdooRPCLocust):
     wait_time = between(500, 5000)
     weight = 10
 
-    tasks = {BackendReadOnlyBehavior}
+    tasks = [BackendReadOnlyBehavior]
 
 
 class BackendWriteOnlyUser(OdooRPCLocust):
@@ -26,7 +26,7 @@ class BackendMixedUser(OdooRPCLocust):
     wait_time = between(500, 3000)
     weight = 5
 
-    tasks = [BackendMixedBehavior]
+    tasks = {BackendMixedBehavior: 3, BackendReadOnlyBehavior: 1}
 
 
 class FrontendUser(HttpUser):
