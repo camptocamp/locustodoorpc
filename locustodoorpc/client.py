@@ -8,7 +8,7 @@ import sys
 import time
 
 import odoorpc
-from locust import HttpUser, events
+from locust import HttpUser, between, events
 
 PY3 = sys.version[0] == '3'
 
@@ -89,6 +89,8 @@ class OdooRPCLocust(HttpUser):
     db_name = os.getenv('ODOO_DB_NAME', 'odoo')
     login = os.getenv('ODOO_LOGIN', 'admin')
     password = os.getenv('ODOO_PASSWORD', 'admin')
+    wait_time = between(1, 2)
+    tasks = []
 
     # allow to force Odoo version (avoid auto-detection)
     version = os.getenv('ODOO_VERSION')
