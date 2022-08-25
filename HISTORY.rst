@@ -3,8 +3,8 @@
 Release History
 ===============
 
-unreleased
-----------
+0.0.3 (2022-08-25)
+------------------
 
 * fix python3 support
 * update locust package name
