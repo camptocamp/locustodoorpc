@@ -91,6 +91,7 @@ class OdooRPCLocust(HttpUser):
     password = os.getenv('ODOO_PASSWORD', 'admin')
     wait_time = between(1, 2)
     tasks = []
+    abstract = True
 
     # allow to force Odoo version (avoid auto-detection)
     version = os.getenv('ODOO_VERSION')

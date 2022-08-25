@@ -22,8 +22,8 @@ setup(
     license='LGPLv3+',
     packages=['locustodoorpc'],
     install_requires=[
-      'odoorpc',
-      'locust',
+      'odoorpc >= 0.8.0',
+      'locust >= 1.1.1',
     ],
     classifiers=(
         'Development Status :: 3 - Alpha',
