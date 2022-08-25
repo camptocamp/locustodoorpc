@@ -96,4 +96,4 @@ class FrontendBehavior(TaskSet):
 
     @task(5)
     def contactus(self):
-        self.client.get("/page/contactus")
+        self.client.get("/contactus")

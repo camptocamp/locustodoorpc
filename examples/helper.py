@@ -1,6 +1,6 @@
 def find_or_create_customer(client):
     Partner = client.env['res.partner']
-    partner_ids = Partner.search([('customer', '=', True)], limit=1)
+    partner_ids = Partner.search([('customer_rank', '>', 0)], limit=1)
     if partner_ids:
         return partner_ids[0]
     else:

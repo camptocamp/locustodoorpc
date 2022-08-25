@@ -10,6 +10,7 @@ unreleased
 * update locust package name
 * adapt to new locust API
 * bump dependencies version of locust and odoorpc
+* update examples to work with Odoo 15.0 out of the box
 
 0.0.2 (2017-11-03)
 ------------------
