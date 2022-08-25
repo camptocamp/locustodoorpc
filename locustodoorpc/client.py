@@ -8,7 +8,7 @@ import sys
 import time
 
 import odoorpc
-from locust import Locust, events
+from locust import HttpUser, between, events
 
 PY3 = sys.version[0] == '3'
 
@@ -74,7 +74,7 @@ class ODOOLocustClient(odoorpc.ODOO):
                                                   headers=headers)
 
 
-class OdooRPCLocust(Locust):
+class OdooRPCLocust(HttpUser):
     """ Locust class providing the odoorpc client
 
     This is the abstract Locust class which should be subclassed. It provides
@@ -89,6 +89,8 @@ class OdooRPCLocust(Locust):
     db_name = os.getenv('ODOO_DB_NAME', 'odoo')
     login = os.getenv('ODOO_LOGIN', 'admin')
     password = os.getenv('ODOO_PASSWORD', 'admin')
+    wait_time = between(1, 2)
+    tasks = []
 
     # allow to force Odoo version (avoid auto-detection)
     version = os.getenv('ODOO_VERSION')
@@ -98,11 +100,9 @@ class OdooRPCLocust(Locust):
         url = urlparse(self.host)
         port = url.port
         if url.scheme == 'https':
-            protocol = 'jsonrpc+ssl'
             if not port:
                 port = 443
         else:
-            protocol = 'jsonrpc'
             if not port:
                 port = 80
         protocol = 'jsonrpc+ssl' if url.scheme == 'https' else 'jsonrpc'

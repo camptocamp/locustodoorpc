@@ -67,9 +67,9 @@ class BaseSalesBehavior(TaskSet):
 class BaseBackendBehavior(TaskSet):
 
     def on_start(self):
-        self.client.login(self.locust.db_name,
-                          self.locust.login,
-                          self.locust.password)
+        self.client.login(self.user.db_name,
+                          self.user.login,
+                          self.user.password)
 
 
 class BackendReadOnlyBehavior(BaseBackendBehavior):
