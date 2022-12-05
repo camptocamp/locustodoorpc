@@ -3,6 +3,12 @@
 Release History
 ===============
 
+x.x.x (unreleased)
+------------------
+
+* update locust version
+* allow Odoo Configuration from the Locust Web UI (#5 by @HP-bkeys)
+
 0.0.3 (2022-08-25)
 ------------------
 
