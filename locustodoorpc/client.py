@@ -22,6 +22,13 @@ else:
     from urllib2 import HTTPError, URLError
 
 
+@events.init_command_line_parser.add_listener
+def _(parser):
+    parser.add_argument("--odoo-db-name", type=str, env_var="ODOO_DB_NAME", default="odoo", help="Target Odoo Database")
+    parser.add_argument("--odoo-login", type=str, env_var="ODOO_LOGIN", default="admin", help="Target Odoo User")
+    parser.add_argument("--odoo-password", type=str, env_var="ODOO_PASSWORD", default="", help="Target Odoo User Password")
+    parser.add_argument("--odoo-version", type=str, env_var="ODOO_VERSION", default="", help="Target Odoo Version")
+
 class ODOOLocustClient(odoorpc.ODOO):
 
     def capture_request(request_type):
@@ -86,19 +93,17 @@ class OdooRPCLocust(HttpUser):
 
     """
 
-    db_name = os.getenv('ODOO_DB_NAME', 'odoo')
-    login = os.getenv('ODOO_LOGIN', 'admin')
-    password = os.getenv('ODOO_PASSWORD', 'admin')
     wait_time = between(1, 2)
     tasks = []
     abstract = True
 
-    # allow to force Odoo version (avoid auto-detection)
-    version = os.getenv('ODOO_VERSION')
-
     def __init__(self, *args, **kwargs):
         super(OdooRPCLocust, self).__init__(*args, **kwargs)
         url = urlparse(self.host)
+        self.db_name = self.environment.parsed_options.odoo_db_name
+        self.login = self.environment.parsed_options.odoo_login
+        self.password = self.environment.parsed_options.odoo_password
+        self.version = self.environment.parsed_options.odoo_version
         port = url.port
         if url.scheme == 'https':
             if not port:

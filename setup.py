@@ -22,8 +22,8 @@ setup(
     license='LGPLv3+',
     packages=['locustodoorpc'],
     install_requires=[
-      'odoorpc >= 0.8.0',
-      'locust >= 1.1.1',
+      'odoorpc >= 0.9.0',
+      'locust >= 2.13.0',
     ],
     classifiers=(
         'Development Status :: 3 - Alpha',
@@ -34,7 +34,7 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3 :: Only',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: Implementation :: CPython',
     ),
 )

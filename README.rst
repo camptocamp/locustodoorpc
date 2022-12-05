@@ -28,25 +28,31 @@ Usage
 -----
 
 For the general documentation on Locust, heads on https://docs.locust.io/en/latest/
-A few options can be customized with environment variables:
+A few options can be customized with environment variables or command line parameters. These
+can also be specified in the Locust Web UI now.
 
-+--------------+-------------------------------------------------------------+
-|Name          |Usage                                                        |
-+--------------+-------------------------------------------------------------+
-|ODOO_DB_NAME  |Configure the name of the database to load-test              |
-|              |(default: odoo)                                              |
-+--------------+-------------------------------------------------------------+
-|ODOO_LOGIN    |Login to use for the actions (default: admin)                |
-+--------------+-------------------------------------------------------------+
-|ODOO_PASSWORD |Password for the user (default: admin)                       |
-+--------------+-------------------------------------------------------------+
-|ODOO_VERSION  |Force an Odoo version (e.g. 9.0, 10.0, 11.0), normally       |
-|              |automatically recognized                                     |
-+--------------+-------------------------------------------------------------+
++--------------+------------------+-------------------------------------------------------------+
+|Name          |Option            |Usage                                                        |
++--------------+------------------+-------------------------------------------------------------+
+|ODOO_DB_NAME  |--odoo-db-name    |Configure the name of the database to load-test              |
+|              |                  |(default: odoo)                                              |
++--------------+------------------+-------------------------------------------------------------+
+|ODOO_LOGIN    |--odoo-login      |Login to use for the actions (default: admin)                |
++--------------+------------------+-------------------------------------------------------------+
+|ODOO_PASSWORD |--odoo-password   |Password for the user (default: admin)                       |
++--------------+------------------+-------------------------------------------------------------+
+|ODOO_VERSION  |--odoo-version    |Force an Odoo version (e.g. 9.0, 10.0, 11.0), normally       |
+|              |                  |automatically recognized                                     |
++--------------+------------------+-------------------------------------------------------------+
 
 Example::
 
   ODOO_DB_NAME=demo locust -f examples/locustfile.py --host http://localhost:8069 
+
+
+Also Valid::
+
+  locust -f examples/locustfile.py --host http://localhost:8069 --odoo-db-name=demo
 
 
 Check the `examples <https://github.com/camptocamp/locustodoorpc/tree/master/examples>`_
