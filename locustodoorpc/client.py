@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2017 Camptocamp SA
+# Copyright 2017-2023 Camptocamp SA
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html)
 
 import json

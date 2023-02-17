@@ -3,7 +3,7 @@
 Release History
 ===============
 
-x.x.x (unreleased)
+0.0.4 (2023-02-17)
 ------------------
 
 * update locust version

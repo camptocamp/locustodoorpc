@@ -13,7 +13,10 @@ Links
 Description
 -----------
 
-Locust custom client integrating the `odoorpc <https://github.com/osiell/odoorpc>`_ library, so you can run load-testing on your odoo services. Have a look at the feature list of `locust <https://github.com/locustio/locust/#description>`_ to see what you can do.
+Locust custom client integrating the `odoorpc
+<https://github.com/osiell/odoorpc>`_ library, so you can run load-testing on
+your odoo services. Have a look at the feature list of `locust
+<https://github.com/locustio/locust/#description>`_ to see what you can do.
 
 Installation
 ------------
